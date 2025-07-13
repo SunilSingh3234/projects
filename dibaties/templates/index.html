@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diabetes Risk Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+            font-family: 'Segoe UI', sans-serif;
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            background: #fff;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #f5576c;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #f5576c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 25px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #d7385e;
+        }
+
+        .result {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        @media screen and (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Diabetes Risk Prediction</h2>
+        <form method="post" action="/predict">
+            <label>Number of Pregnancies</label>
+            <input type="text" name="Pregnancies" required>
+
+            <label>Glucose Level</label>
+            <input type="text" name="Glucose" required>
+
+            <label>Blood Pressure (mm Hg)</label>
+            <input type="text" name="BloodPressure" required>
+
+            <label>Skin Thickness (mm)</label>
+            <input type="text" name="SkinThickness" required>
+
+            <label>Insulin Level</label>
+            <input type="text" name="Insulin" required>
+
+            <label>BMI</label>
+            <input type="text" name="BMI" required>
+
+            <label>Diabetes Pedigree Function</label>
+            <input type="text" name="DiabetesPedigreeFunction" required>
+
+            <label>Age</label>
+            <input type="text" name="Age" required>
+
+            <input type="submit" value="Predict Diabetes Risk">
+        </form>
+
+        {% if prediction_text %}
+            <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
